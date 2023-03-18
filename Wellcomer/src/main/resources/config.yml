@@ -1,0 +1,11 @@
+joinMessage:
+  active: true
+  message: Alguém entrou!
+
+title:
+  active: true
+  titleMessage: Seja bem vindo!
+  subtitleMessage: ao Servidor
+  titleFadeIn: 10
+  titleStay: 70
+  titleFadeOut: 20

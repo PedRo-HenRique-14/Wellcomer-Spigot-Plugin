@@ -1,0 +1,10 @@
+name: 'Wellcomer'
+version: '1.2.1'
+main: 'me.dodopredo.wellcomer.Wellcomer'
+api-version: 1.19
+
+commands:
+  menu:
+    description: "Open a configuration menu."
+    usage: "/menu"
+    aliases: ["menu", "m"]
