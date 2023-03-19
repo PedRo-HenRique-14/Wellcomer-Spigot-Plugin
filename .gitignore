@@ -41,3 +41,7 @@ node_modules
 commitlint.config.js
 package.json
 package-lock.json
+.env
+.releaserc.json
+Makefile
+instructions
