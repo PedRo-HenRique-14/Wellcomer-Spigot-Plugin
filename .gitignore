@@ -37,3 +37,7 @@ Spigot-API
 Spigot-Server
 Bukkit
 CraftBukkit
+node_modules
+commitlint.config.js
+package.json
+package-lock.json

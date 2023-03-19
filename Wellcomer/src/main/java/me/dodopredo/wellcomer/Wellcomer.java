@@ -12,7 +12,7 @@ public class Wellcomer extends JavaPlugin {
 
     FileConfiguration config = getConfig();
 
-    public void onEnable() { //Executado toda vez que o plugin é iniciado pelo servidor
+    public void onEnable() {
 
         saveDefaultConfig();
         config.options().copyDefaults(true);

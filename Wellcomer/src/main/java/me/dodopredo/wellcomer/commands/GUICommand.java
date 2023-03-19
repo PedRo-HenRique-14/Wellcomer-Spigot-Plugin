@@ -115,42 +115,44 @@ public class GUICommand implements CommandExecutor {
         return "";
     }
 
-    public static String getJoinTitleMessage(Integer index){
-
-        if (plugin.getConfig().getBoolean("title.active") == true){
-            String[] titleMessage = new String[]{};
-
-            titleMessage[0] = plugin.getConfig().getString("title.titleMessage");
-            titleMessage[1] = plugin.getConfig().getString("title.subtitleMessage");
-
-            return titleMessage[index];
+    public static String getTitleMessage(){
+        if (plugin.getConfig().getBoolean("title.active")){
+            return plugin.getConfig().getString("title.titleMessage");
         }
         return "";
     }
 
-    public static Integer getTitleTime(Integer index){
-
-        if (plugin.getConfig().getBoolean("title.active") == true){
-            Integer[] time = new Integer[]{};
-
-            time[0] = plugin.getConfig().getInt("title.titleFadeIn");
-            time[1] = plugin.getConfig().getInt("title.titleStay");
-            time[2] = plugin.getConfig().getInt("title.titleFadeOut");
-
-            return time[index];
+    public static String getSubtitleMessage(){
+        if (plugin.getConfig().getBoolean("title.active")){
+            return plugin.getConfig().getString("title.subtitleMessage");
         }
-        return 0;
+        return "";
     }
 
-    public static Boolean setJoinMessage(AsyncPlayerChatEvent event, Boolean editing, String whoClicked, String playerEditingName, String message){
-        if (whoClicked == playerEditingName){
-            if (editing){
-                plugin.getConfig().set("joinMessage.message", message);
-                plugin.saveConfig();
-                event.getPlayer().sendMessage(String.format("The message has changed to: %s", message));
-                return false;
-            }
+    public static Boolean setTitleMessage(AsyncPlayerChatEvent event, String message){
+        plugin.getConfig().set("title.titleMessage", message);
+        plugin.saveConfig();
+        event.getPlayer().sendTitle(String.format("%s", message), "subtitle", 10, 20, 10);
+        event.getPlayer().sendMessage("§2Send the subtitle text in the chat§r");
+        return false;
+    }
+
+    public static Boolean setSubtitleMessage(AsyncPlayerChatEvent event, String message){
+        plugin.getConfig().set("title.subtitleMessage", message);
+        plugin.saveConfig();
+        event.getPlayer().sendTitle(plugin.getConfig().getString("title.titleMessage"), String.format("%s", message), 10, 20, 10);
+        event.getPlayer().sendMessage("§2Done!§r");
+        return false;
+    }
+
+    public static Boolean setJoinMessage(AsyncPlayerChatEvent event, Boolean editing, String message){
+        if (editing) {
+            plugin.getConfig().set("joinMessage.message", message);
+            plugin.saveConfig();
+            event.getPlayer().sendMessage(String.format("The message has changed to: %s", message));
+            return false;
         }
+
         return false;
     }
 

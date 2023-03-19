@@ -16,11 +16,11 @@ public class PlayerManager implements Listener {
     public void onJoin(PlayerJoinEvent pje) {
         pje.setJoinMessage(GUICommand.getJoinMessage());
         pje.getPlayer().sendTitle(
-                GUICommand.getJoinTitleMessage(0),
-                GUICommand.getJoinTitleMessage(1),
-                GUICommand.getTitleTime(0),
-                GUICommand.getTitleTime(1),
-                GUICommand.getTitleTime(2)
+                GUICommand.getTitleMessage(),
+                GUICommand.getSubtitleMessage(),
+                70,
+                70,
+                10
         );
     }
 

@@ -16,13 +16,12 @@ import java.text.Format;
 
 public class ClickEvent implements Listener {
 
-    public Wellcomer plugin;
+    private String playerMessageName = "";
+    private String whoClicked = "";
 
-    private String playerMessageName;
-    private String whoClicked;
-
-    private Boolean editJoinMessage;
-    private Boolean editTitleMessage;
+    private Boolean editJoinMessage = false;
+    private Boolean editTitleMessage = false;
+    private Boolean editSubtitleMessage = false;
 
 
     @EventHandler
@@ -76,7 +75,26 @@ public class ClickEvent implements Listener {
     public void playerEventChat(AsyncPlayerChatEvent event) {
 
         playerMessageName = event.getPlayer().getName();
-        editJoinMessage = GUICommand.setJoinMessage( event, editJoinMessage, whoClicked, playerMessageName, event.getMessage());
+
+        if (editJoinMessage || editTitleMessage || editSubtitleMessage) {
+            event.setCancelled(true);
+        }
+
+        if(whoClicked == playerMessageName) {
+            editJoinMessage = GUICommand.setJoinMessage(event, editJoinMessage, event.getMessage());
+
+            if (editTitleMessage) {
+                editTitleMessage = GUICommand.setTitleMessage(event, event.getMessage());
+                editSubtitleMessage = true;
+                return;
+            }
+
+            if (editSubtitleMessage) {
+                editSubtitleMessage = GUICommand.setSubtitleMessage(event, event.getMessage());
+            }
+
+        }
+
 
     }
 
