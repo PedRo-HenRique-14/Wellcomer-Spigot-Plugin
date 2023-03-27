@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit": "cz",
-    "release": "semantic-release --no-ci"
+    "release": "semantic-release"
   },
   "husky": {
     "hooks": {

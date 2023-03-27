@@ -132,7 +132,7 @@ public class GUICommand implements CommandExecutor {
     public static Boolean setTitleMessage(AsyncPlayerChatEvent event, String message){
         plugin.getConfig().set("title.titleMessage", message);
         plugin.saveConfig();
-        event.getPlayer().sendTitle(String.format("%s", message), "subtitle", 10, 20, 10);
+        event.getPlayer().sendTitle(ChatColor.translateAlternateColorCodes('&', String.format("%s", message)), "subtitle", 10, 20, 10);
         event.getPlayer().sendMessage("§2Send the subtitle text in the chat§r");
         return false;
     }
@@ -140,7 +140,7 @@ public class GUICommand implements CommandExecutor {
     public static Boolean setSubtitleMessage(AsyncPlayerChatEvent event, String message){
         plugin.getConfig().set("title.subtitleMessage", message);
         plugin.saveConfig();
-        event.getPlayer().sendTitle(plugin.getConfig().getString("title.titleMessage"), String.format("%s", message), 10, 20, 10);
+        event.getPlayer().sendTitle(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("title.titleMessage")), ChatColor.translateAlternateColorCodes('&', String.format("%s", message)), 10, 20, 10);
         event.getPlayer().sendMessage("§2Done!§r");
         return false;
     }
@@ -149,7 +149,7 @@ public class GUICommand implements CommandExecutor {
         if (editing) {
             plugin.getConfig().set("joinMessage.message", message);
             plugin.saveConfig();
-            event.getPlayer().sendMessage(String.format("The message has changed to: %s", message));
+            event.getPlayer().sendMessage("The message has changed to: " + ChatColor.translateAlternateColorCodes('&', String.format("%s", message)));
             return false;
         }
 

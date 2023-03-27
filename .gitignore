@@ -45,3 +45,4 @@ package-lock.json
 .releaserc.json
 Makefile
 instructions
+CHANGELOG.md
