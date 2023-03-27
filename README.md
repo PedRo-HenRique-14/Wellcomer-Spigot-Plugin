@@ -9,3 +9,9 @@ Um plugin para servidores de **Minecraft 1.19.2**. Atualmente o plugin se encont
 
 ## Objetivo
 A criação deste plugin vem com o bjetivo de estudar o desenvolvimento de plugins para minecraft através do Spigot-mc.
+
+## Ajuda
+
+### Comandos
+
+* `/menu` : Abre o menu de configurações do plugin.
